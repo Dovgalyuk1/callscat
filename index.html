@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$CALLSCAT — Cat Sales Office</title>
+<meta name="description" content="$CALLSCAT — котиный отдел продаж, который круглосуточно кричит BUY SOLANA. Заходи, пока не поздно.">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ТИКЕР СВЕРХУ ============ -->
+<div class="marquee-wrap">
+  <div class="marquee" id="topMarquee">
+    <span>🐱 BUY SOLANA 🐱 CALL THE CATS 🐱 MOON INCOMING 🐱 $CALLSCAT 🐱 ALPHA CALL 🐱 HODL OR DIE 🐱 BUY SOLANA 🐱 CALL THE CATS 🐱 MOON INCOMING 🐱 $CALLSCAT 🐱 ALPHA CALL 🐱 HODL OR DIE 🐱</span>
+  </div>
+</div>
+
+<!-- ============ SOUND TOGGLE ============ -->
+<button id="soundToggle" class="sound-toggle" aria-pressed="false">
+  <span class="sound-icon">🔇</span>
+  <span class="sound-label">ВКЛ. ОТДЕЛ ПРОДАЖ</span>
+</button>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg-flash" id="heroFlash"></div>
+  <div class="floaters" id="floaters"></div>
+
+  <div class="hero-inner">
+    <img src="assets/logo.jpg" alt="$CALLSCAT logo" class="logo-badge" id="logoBadge">
+
+    <h1 class="glitch-title" data-text="$CALLSCAT">$CALLSCAT</h1>
+    <p class="subtitle">офис, где коты 24/7 кричат в трубку одно слово: <span class="buy-word">BUY</span></p>
+
+    <div class="hero-tags">
+      <span class="tag tag-buy">BUY!</span>
+      <span class="tag tag-moon">MOON!</span>
+      <span class="tag tag-fomo">FOMO</span>
+      <span class="tag tag-hodl">HODL!</span>
+      <span class="tag tag-alpha">ALPHA CALL</span>
+      <span class="tag tag-rekt">REKT</span>
+    </div>
+
+    <div class="cta-row">
+      <a href="#howtobuy" class="btn btn-buy">💰 КУПИТЬ $CALLSCAT</a>
+      <a href="https://x.com/CallsCatX" target="_blank" rel="noopener" class="btn btn-x">𝕏 TWITTER</a>
+      <a href="#chart" class="btn btn-chart">📈 ЧАРТ</a>
+    </div>
+
+    <div class="ca-box" id="caBox">
+      <span class="ca-label">CA:</span>
+      <span class="ca-value" id="caValue">СКОРО В ЭФИРЕ — ЖДИ ЗВОНКА</span>
+      <button class="ca-copy" id="caCopy">COPY</button>
+    </div>
+  </div>
+
+  <img src="assets/office-banner.jpg" alt="Cat Sales Office trading floor" class="banner-img">
+</header>
+
+<!-- ============ ЛОР / ОФИС ============ -->
+<section class="section lore-section">
+  <h2 class="section-title">📞 ДОБРО ПОЖАЛОВАТЬ В ОТДЕЛ ПРОДАЖ</h2>
+  <div class="lore-grid">
+    <div class="lore-card">
+      <div class="lore-emoji">🐈‍⬛</div>
+      <h3>КТО МЫ</h3>
+      <p>Открытый офен-спейс, набитый котами в наушниках. Каждый держит в лапах три монитора и один микрофон. Задача одна: убедить тебя, что сейчас — идеальный момент купить SOL. Было идеально вчера. Будет идеально завтра.</p>
+    </div>
+    <div class="lore-card">
+      <div class="lore-emoji">☎️</div>
+      <h3>ЧТО МЫ ДЕЛАЕМ</h3>
+      <p>Звоним. Кричим "BUY!" в микрофон так, что звуковая волна сшибает соседний монитор. Пьём "ALPHA WATER" из кулера. Заряжаем эспрессо каждые 12 минут. Повторяем.</p>
+    </div>
+    <div class="lore-card">
+      <div class="lore-emoji">📊</div>
+      <h3>НАША СТАТИСТИКА</h3>
+      <p>Один кот спит на клавиатуре — это нормально, у него ночная смена по чарту. Другой уже "MOON!"-ит в потолок. Третий с плакатом "HODL!" и мегафоном обходит опенспейс. Всё под контролем.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ЛАЙВ ЛЕНТА ЗВОНКОВ ============ -->
+<section class="section calls-section">
+  <h2 class="section-title">📟 ЖИВАЯ ЛЕНТА ЗВОНКОВ ОТДЕЛА ПРОДАЖ</h2>
+  <p class="section-sub">каждую секунду кто-то из котов берёт трубку — вот их реальные (нет) результаты</p>
+  <div class="calls-feed" id="callsFeed"></div>
+</section>
+
+<!-- ============ HOW TO BUY ============ -->
+<section class="section howtobuy" id="howtobuy">
+  <h2 class="section-title">🛒 КАК КУПИТЬ (4 ЗВОНКА ДО МУНА)</h2>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <h3>Заведи кошелёк</h3>
+      <p>Phantom / Solflare — что угодно, что понимает Solana. Установи расширение, создай кошелёк, запиши сид-фразу и никому её не показывай — даже коту с мегафоном.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <h3>Купи SOL</h3>
+      <p>На любой бирже купи SOL и переведи на свой кошелёк. Это топливо, на котором работает весь опенспейс.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <h3>Найди $CALLSCAT</h3>
+      <p>Как только контракт выйдет в эфир — вставь его в свой DEX (Jupiter / Raydium). Ссылка появится здесь и в твиттере первой.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">04</div>
+      <h3>Возьми трубку</h3>
+      <p>Нажми BUY. Слушай мяуканье. Не клади трубку.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHART / STATS ============ -->
+<section class="section chart-section" id="chart">
+  <h2 class="section-title">📈 ПАНЕЛЬ ОФИСА</h2>
+  <p class="section-sub">живые данные подключатся, как только контракт заминчен — сейчас это демо-показания мониторов офиса</p>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-label">SOL / USD</div>
+      <div class="stat-value" id="statPrice">$259.98</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">КОТОВ НА ЛИНИИ</div>
+      <div class="stat-value" id="statCats">7</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ЗВОНКОВ СЕГОДНЯ</div>
+      <div class="stat-value" id="statCalls">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">ВЫПИТО "ALPHA WATER"</div>
+      <div class="stat-value" id="statWater">0 л</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <img src="assets/logo.jpg" alt="$CALLSCAT" class="footer-logo">
+  <p class="footer-ticker">$CALLSCAT</p>
+  <div class="footer-links">
+    <a href="https://x.com/CallsCatX" target="_blank" rel="noopener">Twitter / X</a>
+    <a href="#" class="disabled-link" title="скоро">Telegram (скоро)</a>
+    <a href="#" class="disabled-link" title="скоро">Dexscreener (скоро)</a>
+  </div>
+  <p class="footer-disclaimer">$CALLSCAT — мем-токен, шутка про офис котов. Не финансовый совет. Коты в трубке не несут ответственности за твои решения. DYOR.</p>
+</footer>
+
+<!-- ============ ПОП-АП УВЕДОМЛЕНИЯ О СДЕЛКАХ ============ -->
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
