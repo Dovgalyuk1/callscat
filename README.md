@@ -1,22 +1,22 @@
 # $CALLSCAT — Cat Sales Office
 
-Одностраничный лендинг про офис котов, которые круглосуточно кричат "BUY SOLANA" в трубку.
-Чистый HTML/CSS/JS, без сборки — просто статические файлы.
+A single-page landing site about an office full of cats who scream "BUY SOLANA" into the phone 24/7.
+Plain HTML/CSS/JS, no build step — just static files.
 
-## Что внутри
-- `index.html` — вся разметка (hero, лор, живая лента звонков, how-to-buy, панель статов, футер)
-- `style.css` — вся стилистика (пиксельный шрифт, красно-бело-синяя окантовка как на референсе, анимации)
-- `script.js` — вся логика: синтезированный звук (мяу + "касса" через Web Audio API — отдельных mp3 не было, звук сгенерирован кодом), лента toast-уведомлений о покупках/продажах, летающие эмодзи, тряска экрана на "крупных" сделках
-- `assets/logo.jpg` — присланный круглый лого/PFP
-- `assets/office-banner.jpg` — присланный баннер офиса
+## What's inside
+- `index.html` — all the markup (hero, lore, live calls feed, how-to-buy, dashboard, footer)
+- `style.css` — all the styling (pixel font, red-white-blue trim from the reference art, animations)
+- `script.js` — all the logic: synthesized sound (meows + "cash register" via the Web Audio API — no mp3s were provided, so the sound is generated in code), the popup toast feed of buys/sells, floating emoji, screen shake on "big" trades
+- `assets/logo.jpg` — the round logo/PFP that was provided
+- `assets/office-banner.jpg` — the office banner that was provided
 
-## Что нужно доделать перед публикацией
-- **Контракт (CA):** пока плейсхолдер "СКОРО В ЭФИРЕ" в `index.html` (`#caValue`). Как заминтишь — впиши реальный адрес и включи копирование в `script.js` (`caCopyBtn` — сейчас копирует "заглушку", раскомментировать `navigator.clipboard.writeText(realCA)`).
-- **Ссылки:** Telegram и Dexscreener сейчас неактивные ("скоро") в футере — добавь реальные, когда будут.
-- **Живые данные:** цена SOL на панели статов сейчас имитация (лёгкое случайное дрожание числа). Когда появится CA, можно подключить `https://api.dexscreener.com/latest/dex/tokens/<CA>` через fetch и подставлять реальные цифры.
-- Twitter уже настоящий: https://x.com/CallsCatX
+## Before you publish for real
+- **Contract (CA):** still a placeholder ("STILL ON HOLD — PLEASE DON'T HANG UP") in `index.html` (`#caValue`). Once it mints, drop in the real address and enable copy-to-clipboard in `script.js` (`caCopyBtn` — currently just shows a fake confirmation, uncomment `navigator.clipboard.writeText(realCA)`).
+- **Links:** Telegram and Dexscreener are inactive ("soon") in the footer — add the real ones once they exist.
+- **Live data:** the SOL price on the dashboard is currently a fake (gentle random jitter). Once you have a CA, you can wire up `https://api.dexscreener.com/latest/dex/tokens/<CA>` via fetch and swap in real numbers.
+- Twitter is already real: https://x.com/CallsCatX
 
-## Деплой (GitHub + Vercel, без терминала)
-1. Создай репозиторий на github.com, залей эту папку через drag-and-drop в веб-интерфейс.
-2. На vercel.com — "Add New Project" → "Import" из этого репозитория. Build command не нужен, Vercel сам подхватит статику.
-3. Домен покупаешь сам на любом регистраторе, дальше в Vercel → Settings → Domains добавляешь и прописываешь DNS.
+## Deploy (GitHub + Vercel, no terminal needed)
+1. Create a repo on github.com, drag-and-drop this folder in through the web UI.
+2. On vercel.com — "Add New Project" → "Import" from that repo. No build command needed, Vercel picks up the static site automatically.
+3. Buy your own domain from any registrar, then add it and set the DNS records under Vercel → Settings → Domains.

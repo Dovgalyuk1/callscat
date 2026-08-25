@@ -1,14 +1,14 @@
 /* ===================================================================
    $CALLSCAT — Cat Sales Office
-   Синтезированный звук (мяу + гул колл-центра) через Web Audio API —
-   отдельных mp3 не было прислано, поэтому звук генерируется на лету.
+   Sound is synthesized live via the Web Audio API (meows + cash-register
+   blips) — no mp3 files were provided, so nothing external is loaded.
 =================================================================== */
 
 (() => {
   "use strict";
 
   /* ---------------------------------------------------------------
-     0. AUDIO ENGINE (синтез, без внешних файлов)
+     0. AUDIO ENGINE (synthesized, no external files)
   --------------------------------------------------------------- */
   let audioCtx = null;
   let soundOn = false;
@@ -22,7 +22,7 @@
     return audioCtx;
   }
 
-  // Один "мяу": частота едет вверх, потом резко вниз, с вибрато
+  // One "meow": pitch glides up, then drops hard, with vibrato
   function playMeow(pitch = 1, vol = 0.18){
     const ctx = getCtx();
     const now = ctx.currentTime;
@@ -61,7 +61,7 @@
     vibrato.stop(now + 0.4);
   }
 
-  // Короткий "клик кассы" под BUY-кнопку / крупные тосты
+  // Short "cash register" blip for the BUY button / big toasts
   function playCashBlip(){
     const ctx = getCtx();
     const now = ctx.currentTime;
@@ -80,7 +80,7 @@
     });
   }
 
-  // Фоновый "гул опенспейса": рандомные мяуканья с разным питчем/громкостью
+  // Background "office hum": random meows at varying pitch/volume
   function startOfficeLoop(){
     stopOfficeLoop();
     const tick = () => {
@@ -106,8 +106,8 @@
     soundBtn.setAttribute("aria-pressed", String(soundOn));
     soundBtn.querySelector(".sound-icon").textContent = soundOn ? "🔊" : "🔇";
     soundBtn.querySelector(".sound-label").textContent = soundOn
-      ? "ОТДЕЛ ПРОДАЖ ГРЕМИТ"
-      : "ВКЛ. ОТДЕЛ ПРОДАЖ";
+      ? "OFFICE IS LIVE"
+      : "UNMUTE THE OFFICE";
     if(soundOn){
       getCtx();
       playCashBlip();
@@ -118,7 +118,7 @@
   });
 
   /* ---------------------------------------------------------------
-     1. ЛЕТАЮЩИЕ ЭМОДЗИ В HERO (мешки денег, доллары, MOON)
+     1. FLOATING EMOJI IN HERO (money bags, dollars, rockets)
   --------------------------------------------------------------- */
   const floaterEmojis = ["💰","💵","🐱","📈","🚀","💸","😼"];
   const floatersWrap = document.getElementById("floaters");
@@ -143,9 +143,9 @@
   const caCopyBtn = document.getElementById("caCopy");
   const caValue = document.getElementById("caValue");
   caCopyBtn.addEventListener("click", () => {
-    // Контракт ещё не заминчен — как только появится, замени caValue.textContent
-    // на реальный адрес и включи navigator.clipboard.writeText(realCA).
-    caCopyBtn.textContent = "СКОРО!";
+    // Contract hasn't minted yet — once it does, replace caValue.textContent
+    // with the real address and enable navigator.clipboard.writeText(realCA).
+    caCopyBtn.textContent = "HOLD ON!";
     caValue.style.color = "var(--gold)";
     setTimeout(() => {
       caCopyBtn.textContent = "COPY";
@@ -154,17 +154,17 @@
   });
 
   /* ---------------------------------------------------------------
-     3. ЖИВАЯ ЛЕНТА ЗВОНКОВ (инлайн-секция)
+     3. LIVE CALLS FEED (inline section)
   --------------------------------------------------------------- */
   const catNames = [
-    "Мурзик К.", "Барсик Т.", "Кекс Дью", "Снежок Уолл-стрит", "Персик V.",
-    "Тигра McBuy", "Рыжик Alpha", "Соня Ливень", "Феликс Munn", "Симба Rekt",
-    "Луна Пампов", "Васька Trader", "Жора Fomo", "Клякса Chart", "Босс Кот",
-    "Пуффи Degen", "Кузя Signal", "Мася Bullrun"
+    "Whiskers K.", "Sir Biggles", "Cash Cat", "Snowball Wall St.", "Peaches V.",
+    "Tiger McBuy", "Ginger Alpha", "Sleepy Downpour", "Felix Munn", "Simba Rekt",
+    "Luna Pumpington", "Vinnie Trader", "Georgie Fomo", "Inkblot Chart", "Boss Cat",
+    "Puffy Degen", "Kuzya Signal", "Momo Bullrun"
   ];
   const actions = [
-    { type:"buy", verbs:["купил","закупился","затарился","взял ещё"] },
-    { type:"sell", verbs:["продал","зафиксировал","слился"] }
+    { type:"buy", verbs:["bought","aped into","loaded up on","grabbed more"] },
+    { type:"sell", verbs:["sold","took profits on","paper-handed"] }
   ];
 
   function randomAmount(){
@@ -174,7 +174,7 @@
 
   function makeCallLine(){
     const cat = catNames[Math.floor(Math.random() * catNames.length)];
-    const act = actions[Math.random() < 0.78 ? 0 : 1]; // BUY чаще, чем SELL — вайб бычьего офиса
+    const act = actions[Math.random() < 0.78 ? 0 : 1]; // BUY more often than SELL — bullish office vibe
     const verb = act.verbs[Math.floor(Math.random() * act.verbs.length)];
     const amt = randomAmount();
     return { cat, act, verb, amt };
@@ -201,7 +201,7 @@
     callsCount++;
     statCallsEl.textContent = callsCount;
     statCatsEl.textContent = 4 + Math.floor(Math.random() * 6);
-    statWaterEl.textContent = (callsCount * 0.3).toFixed(1) + " л";
+    statWaterEl.textContent = (callsCount * 0.3).toFixed(1) + " L";
 
     return act.type;
   }
@@ -210,7 +210,7 @@
   setInterval(pushCallLine, 1400);
 
   /* ---------------------------------------------------------------
-     4. ВСПЛЫВАЮЩИЕ TOAST-УВЕДОМЛЕНИЯ О СДЕЛКАХ (угол экрана)
+     4. POPUP TRADE TOASTS (corner of the screen)
   --------------------------------------------------------------- */
   const toastStack = document.getElementById("toastStack");
   const heroFlash = document.getElementById("heroFlash");
@@ -223,13 +223,13 @@
       <span class="toast-emoji">${act.type === "buy" ? "📈" : "📉"}</span>
       <span class="toast-text">
         <b>${cat}</b> <span class="${act.type}">${verb}</span> $CALLSCAT
-        <span class="toast-sub">${amt} · только что · alpha call 🐱</span>
+        <span class="toast-sub">${amt} · just now · alpha call 🐱</span>
       </span>
     `;
     toastStack.appendChild(toast);
     setTimeout(() => toast.remove(), 5100);
 
-    // редкие "крупные" сделки — вспышка + тряска экрана + звук кассы
+    // rare "big" trades trigger a flash + screen shake + cash sound
     const big = parseFloat(amt) > 4;
     if(big){
       heroFlash.classList.add("flash");
@@ -249,7 +249,7 @@
   setTimeout(scheduleToast, 800);
 
   /* ---------------------------------------------------------------
-     5. BUY-КНОПКА: большой отклик (звук + вспышка)
+     5. BUY BUTTON: big response (sound + flash)
   --------------------------------------------------------------- */
   document.querySelector(".btn-buy").addEventListener("click", () => {
     getCtx();
@@ -258,7 +258,7 @@
       soundOn = true;
       soundBtn.setAttribute("aria-pressed", "true");
       soundBtn.querySelector(".sound-icon").textContent = "🔊";
-      soundBtn.querySelector(".sound-label").textContent = "ОТДЕЛ ПРОДАЖ ГРЕМИТ";
+      soundBtn.querySelector(".sound-label").textContent = "OFFICE IS LIVE";
       startOfficeLoop();
     }
     heroFlash.classList.add("flash");
@@ -266,7 +266,7 @@
   });
 
   /* ---------------------------------------------------------------
-     6. ЖИВАЯ (демо) ЦЕНА SOL НА ПАНЕЛИ — лёгкое дрожание числа
+     6. LIVE (demo) SOL PRICE ON THE DASHBOARD — a gentle jitter
   --------------------------------------------------------------- */
   const statPrice = document.getElementById("statPrice");
   let basePrice = 259.98;
